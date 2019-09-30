@@ -23,7 +23,7 @@ void PrintIntroduction(int Difficulty)
 	std::cout << "Good luck Samurai!" << "\n";
 	std::cout << "\n";
 	}
-	else if (Difficulty < 10)
+	else if (Difficulty < 6)
 	{
 		std::cout << "\nYou are on layer "<<  Difficulty << ".\n";
 	}
