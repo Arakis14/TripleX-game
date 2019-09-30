@@ -26,7 +26,13 @@ int main()
 	std::cout << "There are 3 numbers in the code" << std::endl;
 	std::cout << "The numbers in the code add up to: " << CodeSum << std::endl;
 	std::cout << "The numbers in the code multiply to: " << CodeProduct << std::endl;
+	std::cout << std::endl;
 
-	int PlayerGuess {};
+	int GuessA, GuessB, GuessC;
+	std::cout<< "Enter 3 numbers seperated by spaces:";
+	std::cin >> GuessA >> GuessB >> GuessC;
+	std::cout << "You entered: " << GuessA << " " << GuessB << " " << GuessC << " " << std::endl;
+	int GuessSum = SumThreeValues(GuessA,GuessB,GuessC);
+	int GuessProduct = MultiplyThreeValues(GuessA,GuessB,GuessC);
 	return 0;
 }
