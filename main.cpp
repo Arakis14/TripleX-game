@@ -12,10 +12,11 @@ constexpr T MultiplyThreeValues(T a, T b, T c)
 }
 int main()
 {
-	std::cout << "You name is Bond, James Bond ... (spoken with strong Scotish accent of Mr Sean Connery)." << std::endl;
-	std::cout << "You are about to use on of the gadgets M has provided you and hack into a secret computer." << std::endl;
+	std::cout << "Welcome in Cyberpunks 2077 simple hacking game." << std::endl;
+	std::cout << "You are a beginning netrunner climbing its way into the cartels of the Night City." << std::endl;
+	std::cout << "You are about to score your first job by hacking into poorly secured data server of minor corporation. " << std::endl;
 	std::cout << "In order to be succesfull enter the correct code. Failure will result in an alarm and your probable death." << std::endl;
-	std::cout << "Good luck 007!" << std::endl;
+	std::cout << "Good luck Samurai!" << std::endl;
 	std::cout << std::endl;
 	const int CodeA = 5;
 	const int CodeB = 10;
@@ -32,7 +33,13 @@ int main()
 	std::cout<< "Enter 3 numbers seperated by spaces:";
 	std::cin >> GuessA >> GuessB >> GuessC;
 	std::cout << "You entered: " << GuessA << " " << GuessB << " " << GuessC << " " << std::endl;
+
 	int GuessSum = SumThreeValues(GuessA,GuessB,GuessC);
 	int GuessProduct = MultiplyThreeValues(GuessA,GuessB,GuessC);
+
+	if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+		std::cout << "Hacking successful... Good job Samurai!" << std::endl;
+	else
+		std::cout << "Code incorrect. Security breach!" << std::endl;
 	return 0;
 }
