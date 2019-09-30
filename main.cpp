@@ -25,11 +25,11 @@ void PrintIntroduction(int Difficulty)
 	}
 	else if (Difficulty < 10)
 	{
-		std::cout << "\nThis security is piece of cake. Another layer hacked. You are on layer "<<  Difficulty << ".\n";
+		std::cout << "\nYou are on layer "<<  Difficulty << ".\n";
 	}
 	else
 	{
-		std::cout << "\nAlmost there Samurai! You can do it! Last level!" << "\n";
+		std::cout << "\nAlmost there Samurai! You can do it! Last layer!" << "\n";
 	}
 	
 }
@@ -59,6 +59,7 @@ bool PlayGame(int Difficulty)
 	if (GuessSum == CodeSum && GuessProduct == CodeProduct)
 	{
 		std::cout << "*** Hacking successful... Good job Samurai! ***" << "\n";
+		std::cout << "*** This security is piece of cake. ***" << "\n";
 		return true;
 	}
 	else
