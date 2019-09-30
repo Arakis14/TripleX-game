@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 template <typename T>
 constexpr T SumThreeValues(T a, T b, T c)
@@ -12,18 +13,19 @@ constexpr T MultiplyThreeValues(T a, T b, T c)
 }
 void PrintIntroduction(int Difficulty)
 {
-	if (Difficulty == 0)
+	if (Difficulty == 1)
 	{
 	std::cout << "\nWelcome in Cyberpunks' 2077 simple hacking game." << "\n";
 	std::cout << "You are a beginning netrunner climbing its way into the cartels of the Night City." << "\n";
 	std::cout << "You are about to score your first job by hacking into poorly secured data server of minor corporation. " << "\n";
-	std::cout << "In order to be succesfull enter the correct code. Failure is not an option." << "\n";
+	std::cout << "In order to performe a succesfull hacking enter the correct code." << "\n";
+	std::cout << "You might need to go through many layers of security. Failure might result in an alarm." << "\n";
 	std::cout << "Good luck Samurai!" << "\n";
 	std::cout << "\n";
 	}
 	else if (Difficulty < 10)
 	{
-		std::cout << "\nThis security is piece of cake. Keep going! " << 10-Difficulty << " levels to go," << "\n";
+		std::cout << "\nThis security is piece of cake. Another layer hacked. You are on layer "<<  Difficulty << ".\n";
 	}
 	else
 	{
@@ -34,9 +36,9 @@ void PrintIntroduction(int Difficulty)
 bool PlayGame(int Difficulty)
 {
 	PrintIntroduction(Difficulty);
-	const int CodeA = 5;
-	const int CodeB = 10;
-	const int CodeC = 4;
+	const int CodeA = rand() % Difficulty+Difficulty;
+	const int CodeB = rand() % Difficulty+Difficulty;
+	const int CodeC = rand() % Difficulty+Difficulty;
 	const int CodeSum = SumThreeValues(CodeA,CodeB,CodeC);
 	const int CodeProduct = MultiplyThreeValues(CodeA,CodeB,CodeC);
 
@@ -44,6 +46,7 @@ bool PlayGame(int Difficulty)
 	std::cout << "The numbers in the code add up to: " << CodeSum << "\n";
 	std::cout << "The numbers in the code multiply to: " << CodeProduct << "\n";
 	std::cout << "\n";
+
 
 	int GuessA, GuessB, GuessC;
 	std::cout<< "Enter 3 numbers seperated by spaces:";
@@ -55,22 +58,24 @@ bool PlayGame(int Difficulty)
 
 	if (GuessSum == CodeSum && GuessProduct == CodeProduct)
 	{
-		std::cout << "Hacking successful... Good job Samurai!" << "\n";
+		std::cout << "*** Hacking successful... Good job Samurai! ***" << "\n";
 		return true;
 	}
 	else
 	{
-		std::cout << "Code incorrect. Security breach!" << "\n";
+		std::cout << "*** Code incorrect. Security breach! ***" << "\n";
+		std::cout << "*** Fortunetlly you did not start the alarm, try again! **" << "\n";
 		return false;
 	}
 		
 }
 int main()
 {
-	int LevelDifficulty {0};
-	const int MaxDifficulty {11};
+	srand(time(NULL));
+	int LevelDifficulty {1};
+	const int MaxDifficulty {6};
 
-	while (LevelDifficulty != MaxDifficulty)
+	while (LevelDifficulty <= MaxDifficulty)
 	{
 		bool bLevelComplete = PlayGame(LevelDifficulty);
 		std::cin.clear();
@@ -80,7 +85,7 @@ int main()
 		{
 			++LevelDifficulty;
 		}
-		
 	}
+	std::cout << "Excellent work Samurai. You retrived the data successfuly. Any gang will welcome you now. Take care!" << "\n";
 	return 0;
 }
